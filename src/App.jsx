@@ -48,11 +48,19 @@ function App() {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setCurrentTime(new Date());
+      if (city) {
+        const cityTimezoneOffset = city.timezone; // Зміщення в секундах
+        const localTime = new Date();
+        const utc = localTime.getTime() + localTime.getTimezoneOffset() * 60000; // UTC час у мілісекундах
+        const cityTime = new Date(utc + cityTimezoneOffset * 1000); // Час міста
+        setCurrentTime(cityTime);
+      } else {
+        setCurrentTime(new Date());
+      }
     }, 1000);
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [city]);
 
   const handleCityChange = (e) => {
     setInputCity(e.target.value);
@@ -149,7 +157,9 @@ function App() {
                           <span>
                             {new Date(
                               city.sys?.sunrise * 1000
-                            ).toLocaleTimeString()}
+                            ).toLocaleTimeString("en-GB", {
+                              timeZone: "UTC",
+                            })}
                           </span>
                         </div>
                       </div>
@@ -164,7 +174,9 @@ function App() {
                           <span>
                             {new Date(
                               city.sys?.sunset * 1000
-                            ).toLocaleTimeString()}
+                            ).toLocaleTimeString("en-GB", {
+                              timeZone: "UTC",
+                            })}
                           </span>
                         </div>
                       </div>
@@ -208,6 +220,7 @@ function App() {
                       <div className="weatherDetails__info">
                         <span> Wind: </span>
                         <span className="accent"> {city.wind?.speed} m/s </span>
+                        <span className="accent"> {city.timezone} m/s </span>
                       </div>
                     </div>
                     <div className="weatherDetails__box">
