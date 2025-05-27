@@ -93,14 +93,14 @@ img {
   border-radius: 30px;
 }
 .weather__generalInfo {
-  width: 35%;
+  width: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 .weather__detailedInfo {
-  width: 65%;
+  width: 70%;
   display: flex;
   align-items: center;
   gap: 5%;
@@ -108,11 +108,11 @@ img {
 }
 .weather__city {
   font-weight: 700;
-  font-size: 36px;
+  font-size: 25px;
   color: #358ec7;
 }
 .weather__time .time {
-  font-size: 96px;
+  font-size: 80px;
   color: #4e4e4e;
 }
 .weather__time .date {
