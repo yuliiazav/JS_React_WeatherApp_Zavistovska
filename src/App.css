@@ -9,7 +9,7 @@
 .logo {
   will-change: filter;
   transition: filter 300ms;
-  width: 20%;
+  width: 15%;
 }
 img {
   width: 100%;
@@ -83,8 +83,9 @@ img {
 }
 .weather__header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+  width: 70%;
 }
 .weather__box {
   background: #d9d9d9;
