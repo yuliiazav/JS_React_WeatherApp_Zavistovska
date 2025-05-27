@@ -84,10 +84,12 @@ function App() {
     <ThemeProvider>
       <div className="wrapper">
         <div id="weather" className={`weather ${theme}`}>
-          <button className="colorScheme-switch" onClick={toggleTheme}>
-            Switch color theme
-          </button>
-          <h2 className="welcometext">Check the weather in your city!</h2>
+          <div className="top-header">
+            <button className="colorScheme-switch" onClick={toggleTheme}>
+              Switch color theme
+            </button>
+            <h2 className="welcometext">Check the weather in your city!</h2>
+          </div>
           <div className="weather__header">
             <div className="logo">
               <img src={iconWeather} alt="iconWeather" className="logo__img" />
@@ -142,7 +144,7 @@ function App() {
                 >
                   <div className="block__weatherTemp">
                     <div className="weather__temp">
-                      {Math.round(city.main?.temp)}°C
+                      <span> {Math.round(city.main?.temp)}°C</span>
                     </div>
 
                     <div className="weather__sun">
@@ -220,7 +222,6 @@ function App() {
                       <div className="weatherDetails__info">
                         <span> Wind: </span>
                         <span className="accent"> {city.wind?.speed} m/s </span>
-                        <span className="accent"> {city.timezone} m/s </span>
                       </div>
                     </div>
                     <div className="weatherDetails__box">
@@ -230,7 +231,7 @@ function App() {
                         className="weather__detailsIcon"
                       />
                       <div className="weatherDetails__info">
-                        <span>Pressure : </span>
+                        <span>Pressure: </span>
                         <span className="accent">
                           {city.main?.pressure} hPa
                         </span>
